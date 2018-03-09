@@ -1,0 +1,35 @@
+{
+  "name": "wdio-react-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klamping/wdio-react-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klamping/wdio-react-example/issues"
+  },
+  "homepage": "https://github.com/klamping/wdio-react-example#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-webdriverio": "^0.4.3",
+    "chromedriver": "^2.36.0",
+    "dotenv": "^5.0.1",
+    "jest-matchers": "^20.0.3",
+    "wdio-browserstack-service": "^0.1.14",
+    "wdio-chromedriver-service": "^0.1.2",
+    "wdio-screenshots-cleanup-service": "0.0.7",
+    "webdriverio": "^4.12.0"
+  },
+  "devDependencies": {
+    "wdio-mocha-framework": "^0.5.13",
+    "wdio-spec-reporter": "^0.1.4"
+  }
+}
