@@ -178,8 +178,6 @@ let wdioConfig = {
      */
     before: function (capabilities, specs) {
         const chai = require('chai');
-        const chaiWebdriver = require('chai-webdriverio').default;
-        chai.use(chaiWebdriver(browser));
         global.expect = chai.expect;
     },
     /**
