@@ -25,6 +25,7 @@
     "jest-matchers": "^20.0.3",
     "wdio-browserstack-service": "^0.1.14",
     "wdio-chromedriver-service": "^0.1.2",
+    "wdio-docker-service": "^1.1.7",
     "wdio-screenshots-cleanup-service": "0.0.7",
     "webdriverio": "^4.12.0"
   },

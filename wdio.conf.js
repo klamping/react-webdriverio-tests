@@ -10,8 +10,8 @@ let wdioConfig = {
     // should work too though). These services define specific user and key (or access key)
     // values you need to put in here in order to connect to these services.
     //
-    user: process.env.BROWSERSTACK_USER,
-    key: process.env.BROWSERSTACK_USER,
+    // user: process.env.BROWSERSTACK_USER,
+    // key: process.env.BROWSERSTACK_USER,
 
 
     //
@@ -144,7 +144,7 @@ let wdioConfig = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: "bdd",
-        timeout: 60000
+        timeout: 120000
     },
     //
     // =====
