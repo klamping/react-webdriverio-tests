@@ -297,8 +297,8 @@ if (process.env.BROWSERSTACK_USER) {
       browser_version: "16.0"
     }];
 } else {
-    wdioConfig.services.push("chromedriver");
-    wdioConfig.port = "9515";
+    // wdioConfig.services.push("chromedriver");
+    // wdioConfig.port = "9515";
     wdioConfig.path = "/";
 }
 
