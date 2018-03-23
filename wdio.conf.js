@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 let wdioConfig = {
-
+    path: "/",
     //
     // =================
     // Service Providers
@@ -264,6 +264,8 @@ let wdioConfig = {
 if (process.env.BROWSERSTACK_USER) {
     wdioConfig.services.push("browserstack");
 
+    wdioConfig.path = "/wd/hub/";
+
     wdioConfig.capabilities = [{
       os: "OS X",
       os_version: "El Capitan",
@@ -294,10 +296,10 @@ if (process.env.BROWSERSTACK_USER) {
       browser: "edge",
       browser_version: "16.0"
     }];
-} else {
-    // wdioConfig.services.push("chromedriver");
-    // wdioConfig.port = "9515";
-    wdioConfig.path = "/";
+} else if (process.env.CI !== "true") {
+    wdioConfig.services.push("chromedriver");
+
+    wdioConfig.port = "9515";
 }
 
 exports.config = wdioConfig;
