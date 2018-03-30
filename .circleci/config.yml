@@ -10,14 +10,6 @@ jobs:
       - image: robcherry/docker-chromedriver
 
     steps:
-      ## download react image and start server
-      - run: |
-          export TZ=/usr/share/zoneinfo/America/Los_Angeles
-          git clone $GIT_URL react
-          cd react && yarn && yarn build --type=UMD_DEV
-          cd fixtures/dom/ && yarn && yarn prestart && yarn build
-          yarn start &
-
       - checkout
 
       # Download and cache dependencies
@@ -33,6 +25,14 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      ## download react image and start server
+      - run: |
+          export TZ=/usr/share/zoneinfo/America/Los_Angeles
+          git clone $GIT_URL react
+          cd react && yarn && yarn build --type=UMD_DEV
+          cd fixtures/dom/ && yarn && yarn prestart && yarn build
+          yarn start &
 
       # run tests!
       - run: npm test
