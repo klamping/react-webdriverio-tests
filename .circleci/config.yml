@@ -12,6 +12,10 @@ jobs:
     steps:
       - checkout
 
+      # Build docker image with correct GIT_URL
+      - setup_remote_docker
+      - run: docker build -t reactdom . # --build-arg GIT_URL=https://github.com/Deraen/react.git
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -27,4 +31,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm test
+      - run: DOCKER_IMAGE=reactdom npm test

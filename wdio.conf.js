@@ -86,7 +86,7 @@ let wdioConfig = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: "https://musing-lewin-a6efa4.netlify.com/",
+    baseUrl: "http://localhost:3000/",
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -120,10 +120,18 @@ let wdioConfig = {
     // Services take over a specific job you don"t want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don"t add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ["screenshots-cleanup"],
+    services: ["screenshots-cleanup", "docker"],
 
     cleanScreenshotsFolder: {
         folder: "./errorShots/",
+    },
+
+    dockerOptions: {
+        image: process.env.DOCKER_IMAGE || 'klamping/reactdom',
+        healthCheck: 'http://localhost:3000/',
+        options: {
+            p: ['3000:3000']
+        }
     },
     //
     // Framework you want to run your specs with.

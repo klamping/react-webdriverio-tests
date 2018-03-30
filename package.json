@@ -22,6 +22,7 @@
     "chromedriver": "^2.37.0",
     "dotenv": "^5.0.1",
     "wdio-chromedriver-service": "^0.1.2",
+    "wdio-docker-service": "^1.1.8",
     "wdio-screenshots-cleanup-service": "0.0.7",
     "webdriverio": "^4.12.0"
   },
