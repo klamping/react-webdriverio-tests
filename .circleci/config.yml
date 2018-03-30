@@ -10,11 +10,15 @@ jobs:
       - image: robcherry/docker-chromedriver
 
     steps:
-      - checkout
+      ## download react image and start server
+      - run: |
+          export TZ=/usr/share/zoneinfo/America/Los_Angeles
+          git clone $GIT_URL react
+          cd react && yarn && yarn build --type=UMD_DEV
+          cd fixtures/dom/ && yarn && yarn prestart && yarn build
+          yarn start &
 
-      # Build docker image with correct GIT_URL
-      - setup_remote_docker
-      # - run: docker build -t reactdom . --build-arg GIT_URL=${GIT_URL}
+      - checkout
 
       # Download and cache dependencies
       - restore_cache:
