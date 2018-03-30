@@ -16,5 +16,7 @@ RUN cd react/fixtures/dom/ && yarn && yarn prestart && yarn build
 # Run the server
 CMD cd react/fixtures/dom/ && yarn start
 
+HEALTHCHECK CMD nc -vz localhost 3000
+
 # Let us access the DOM fixtures server
 EXPOSE 3000

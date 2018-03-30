@@ -14,7 +14,7 @@ jobs:
 
       # Build docker image with correct GIT_URL
       - setup_remote_docker
-      - run: docker build -t reactdom . --build-arg GIT_URL=${GIT_URL}
+      # - run: docker build -t reactdom . --build-arg GIT_URL=${GIT_URL}
 
       # Download and cache dependencies
       - restore_cache:

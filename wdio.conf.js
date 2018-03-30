@@ -126,9 +126,10 @@ let wdioConfig = {
         folder: "./errorShots/",
     },
 
+    debug: true,
     dockerOptions: {
         image: process.env.DOCKER_IMAGE || 'klamping/reactdom',
-        healthCheck: 'http://localhost:3000/',
+        healthCheck: 'http://localhost:3000',
         options: {
             p: ['3000:3000']
         }
