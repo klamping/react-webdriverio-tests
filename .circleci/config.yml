@@ -32,7 +32,9 @@ jobs:
           git clone $GIT_URL react
           cd react && yarn && yarn build --type=UMD_DEV
           cd fixtures/dom/ && yarn && yarn prestart && yarn build
-          yarn start &
+      - run:
+          command: cd fixtures/dom/react && yarn start
+          background: true
 
       # run tests!
-      - run: npm test
+      - run: npm test -- --services=[]
