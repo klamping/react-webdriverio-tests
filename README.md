@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/klamping/webdriverio-course-content/tree/master.svg?style=svg)](https://circleci.com/gh/klamping/webdriverio-course-content/tree/master)
+[![CircleCI](https://circleci.com/gh/klamping/react-webdriverio-tests/tree/master.svg?style=svg)](https://circleci.com/gh/klamping/react-webdriverio-tests/tree/master)
 
 # DOM Test Fixture Automation
 
