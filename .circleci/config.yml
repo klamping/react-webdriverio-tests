@@ -44,17 +44,6 @@ jobs:
           command: cd react/fixtures/dom && yarn start
           background: true
 
-      - run:
-          name: Download Selenium
-          command: |
-            npm i selenium-standalone
-            ./node_modules/.bin/selenium-standalone install
-      - run:
-          name: Start Selenium
-          command: |
-            ./node_modules/.bin/selenium-standalone start
-          background: true
-
       # run tests!
       - run: npm test -- --reporters=spec,junit
 
