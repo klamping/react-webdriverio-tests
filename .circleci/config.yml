@@ -7,7 +7,15 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.9
-      - image: robcherry/docker-chromedriver
+      - image: selenium/hub:3.11.0-californium
+          name: selenium-hub
+          -p 4444:4444
+      - image: selenium/node-chrome:3.11.0-californium
+        environment:
+          HUB_HOST: selenium-hub
+      - image: selenium/node-firefox:3.11.0-californium
+        environment:
+          HUB_HOST: selenium-hub
 
     steps:
       - checkout
