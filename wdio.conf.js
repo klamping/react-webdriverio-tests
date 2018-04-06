@@ -315,7 +315,7 @@ if (process.env.BROWSERSTACK_USER) {
       browser: "edge",
       browser_version: "16.0"
     }];
-} else if (process.env.CI !== "true") {
+} else {
     wdioConfig.services.push("selenium-standalone");
 }
 
