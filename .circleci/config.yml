@@ -33,7 +33,7 @@ jobs:
           cd react && yarn && yarn build --type=UMD_DEV
           cd fixtures/dom/ && yarn && yarn prestart && yarn build
       - run:
-          command: cd fixtures/dom/react && yarn start
+          command: cd react/fixtures/dom && yarn start
           background: true
 
       # run tests!
