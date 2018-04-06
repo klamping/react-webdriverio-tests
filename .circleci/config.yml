@@ -26,13 +26,23 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       ## download react image and start server
-      - run: |
-          export TZ=/usr/share/zoneinfo/America/Los_Angeles
-          git clone $GIT_URL react
-          cd react && yarn && yarn build --type=UMD_DEV
-          cd fixtures/dom/ && yarn && yarn prestart && yarn build
+      # - run: |
+      #     export TZ=/usr/share/zoneinfo/America/Los_Angeles
+      #     git clone $GIT_URL react
+      #     cd react && yarn && yarn build --type=UMD_DEV
+      #     cd fixtures/dom/ && yarn && yarn prestart && yarn build
+      # - run:
+      #     command: cd react/fixtures/dom && yarn start
+      #     background: true
+
       - run:
-          command: cd react/fixtures/dom && yarn start
+          name: Download Selenium
+          command: |
+            curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: |
+            java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
           background: true
 
       # run tests!
