@@ -39,8 +39,5 @@ jobs:
       # run tests!
       - run: npm test -- --services=[] --reporters=spec,junit
 
-      - store_artifacts:
-          path: react/fixtures/dom/build
-
       - store_test_results:
           path: ./junit

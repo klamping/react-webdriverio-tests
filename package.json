@@ -25,6 +25,7 @@
     "wdio-docker-service": "^1.1.8",
     "wdio-junit-reporter": "^0.4.2",
     "wdio-screenshots-cleanup-service": "0.0.7",
+    "wdio-selenium-standalone-service": "0.0.10",
     "webdriverio": "^4.12.0"
   },
   "devDependencies": {

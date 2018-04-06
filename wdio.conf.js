@@ -1,7 +1,8 @@
 require("dotenv").config();
 
+const mochaTimeout = process.env.DEBUG === "true" ? 99999999 : 120000;
+
 let wdioConfig = {
-    path: "/",
     //
     // =================
     // Service Providers
@@ -52,9 +53,14 @@ let wdioConfig = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-        browserName: "chrome"
-    }],
+    capabilities: [
+        {
+            browserName: "chrome"
+        },
+        {
+            browserName: "firefox"
+        }
+    ],
     //
     // ===================
     // Test Configurations
@@ -159,7 +165,7 @@ let wdioConfig = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: "bdd",
-        timeout: 120000
+        timeout: mochaTimeout
     },
     //
     // =====
@@ -279,8 +285,6 @@ let wdioConfig = {
 if (process.env.BROWSERSTACK_USER) {
     wdioConfig.services.push("browserstack");
 
-    wdioConfig.path = "/wd/hub/";
-
     wdioConfig.capabilities = [{
       os: "OS X",
       os_version: "El Capitan",
@@ -312,9 +316,7 @@ if (process.env.BROWSERSTACK_USER) {
       browser_version: "16.0"
     }];
 } else if (process.env.CI !== "true") {
-    wdioConfig.services.push("chromedriver");
-
-    wdioConfig.port = "9515";
+    wdioConfig.services.push("selenium-standalone");
 }
 
 exports.config = wdioConfig;
