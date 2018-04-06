@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/klamping/webdriverio-course-content/tree/master.svg?style=svg)](https://circleci.com/gh/klamping/webdriverio-course-content/tree/master)
+
 # DOM Test Fixture Automation
 
 An experiment to automate manual testing of the [ReactDOM test fixtures](https://github.com/facebook/react/tree/master/fixtures/dom).
