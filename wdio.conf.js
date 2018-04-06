@@ -148,6 +148,12 @@ let wdioConfig = {
     // see also: http://webdriver.io/guide/reporters/dot.html
     reporters: ["spec"],
 
+    reporterOptions: {
+        junit: {
+            outputDir: './junit'
+        }
+    },
+
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
