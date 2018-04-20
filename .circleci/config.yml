@@ -57,4 +57,4 @@ jobs:
 
 notify:
   webhooks:
-    - url: https://hooks.zapier.com/hooks/catch/106802/fsu5q4/
+    - url: https://hooks.zapier.com/hooks/catch/106802/fsu5q4/?PR_URL=$PR_URL
