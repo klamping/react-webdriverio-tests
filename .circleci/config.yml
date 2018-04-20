@@ -11,50 +11,50 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Install the latest firefox
-          command: |
-            sudo apt-get remove firefox-mozilla-build binutils &&
-            sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list" &&
-            sudo apt-get update &&
-            sudo apt-get install -t sid firefox &&
-            firefox --version
+      # - run:
+      #     name: Install the latest firefox
+      #     command: |
+      #       sudo apt-get remove firefox-mozilla-build binutils &&
+      #       sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list" &&
+      #       sudo apt-get update &&
+      #       sudo apt-get install -t sid firefox &&
+      #       firefox --version
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      # # Download and cache dependencies
+      # - restore_cache:
+      #     keys:
+      #     - v1-dependencies-{{ checksum "package.json" }}
+      #     # fallback to using the latest cache if no exact match is found
+      #     - v1-dependencies-
 
-      - run: npm install
+      # - run: npm install
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      # - save_cache:
+      #     paths:
+      #       - node_modules
+      #     key: v1-dependencies-{{ checksum "package.json" }}
 
-      ## download react image and start server
-      - run: |
-          export TZ=/usr/share/zoneinfo/America/Los_Angeles
-          git clone $GIT_URL react
-          cd react && yarn && yarn build --type=UMD_DEV
-          cd fixtures/dom/ && yarn && yarn prestart && yarn build
-      - run:
-          command: cd react/fixtures/dom && yarn start
-          background: true
+      # ## download react image and start server
+      # - run: |
+      #     export TZ=/usr/share/zoneinfo/America/Los_Angeles
+      #     git clone $GIT_URL react
+      #     cd react && yarn && yarn build --type=UMD_DEV
+      #     cd fixtures/dom/ && yarn && yarn prestart && yarn build
+      # - run:
+      #     command: cd react/fixtures/dom && yarn start
+      #     background: true
 
-      # run tests!
-      - run: npm test -- --reporters=spec,junit,allure
+      # # run tests!
+      # - run: npm test -- --reporters=spec,junit,allure
 
-      - run: npm run report:generate
+      # - run: npm run report:generate
 
-      - store_test_results:
-          path: ./junit
+      # - store_test_results:
+      #     path: ./junit
 
-      - store_artifacts:
-          path: ./allure-report
+      # - store_artifacts:
+      #     path: ./allure-report
 
 notify:
   webhooks:
-    - url: https://hooks.zapier.com/hooks/catch/106802/fsu5q4/?PR_URL=$PR_URL
+    - url: https://hooks.zapier.com/hooks/catch/106802/fsu5q4/?PR_URL=${PR_URL}
