@@ -45,7 +45,12 @@ jobs:
           background: true
 
       # run tests!
-      - run: npm test -- --reporters=spec,junit
+      - run: npm test -- --reporters=spec,junit,allure
+
+      - run: npm run report:generate
 
       - store_test_results:
           path: ./junit
+
+      - store_artifacts:
+          path: ./allure-report

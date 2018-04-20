@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio"
+    "test": "rimraf ./allure-results && wdio",
+    "report": "allure generate --clean && allure open",
+    "report:generate": "allure generate",
+    "report:open": "allure open"
   },
   "repository": {
     "type": "git",
@@ -18,9 +21,12 @@
   },
   "homepage": "https://github.com/klamping/wdio-react-example#readme",
   "dependencies": {
+    "allure-commandline": "^2.5.0",
     "chai": "^4.1.2",
     "chromedriver": "^2.37.0",
     "dotenv": "^5.0.1",
+    "rimraf": "^2.6.2",
+    "wdio-allure-reporter": "^0.6.0",
     "wdio-chromedriver-service": "^0.1.2",
     "wdio-docker-service": "^1.1.8",
     "wdio-junit-reporter": "^0.4.2",

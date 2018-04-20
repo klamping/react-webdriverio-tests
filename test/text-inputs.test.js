@@ -59,7 +59,7 @@ describe("Text Inputs", function () {
         })
     })
 
-    describe.only("Cursor when editing url inputs", function () {
+    describe("Cursor when editing url inputs", function () {
         it("should not jump to the end !@firefox", function () {
             // Temp workaround to skip this test in Firefox
             if (browser.options.desiredCapabilities.browserName === "firefox") {

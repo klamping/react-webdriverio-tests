@@ -60,3 +60,6 @@ typings/
 # WebdriverIO
 junit/
 errorShots/
+
+allure-results/
+allure-report/
