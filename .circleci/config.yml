@@ -54,3 +54,7 @@ jobs:
 
       - store_artifacts:
           path: ./allure-report
+
+notify:
+  webhooks:
+    - url: https://hooks.zapier.com/hooks/catch/106802/fsu5q4/
