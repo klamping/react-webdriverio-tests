@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint wdio.conf.js test/**/*.js",
     "test": "rimraf ./allure-results && wdio",
     "report": "allure generate --clean && allure open",
     "report:generate": "allure generate",
@@ -25,6 +26,9 @@
     "chai": "^4.1.2",
     "chromedriver": "^2.37.0",
     "dotenv": "^5.0.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.12.1",
     "rimraf": "^2.6.2",
     "wdio-allure-reporter": "^0.6.0",
     "wdio-chromedriver-service": "^0.1.2",
@@ -35,6 +39,11 @@
     "webdriverio": "^4.12.0"
   },
   "devDependencies": {
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
     "wdio-mocha-framework": "^0.5.13",
     "wdio-spec-reporter": "^0.1.4"
   }
