@@ -15,7 +15,7 @@ describe('Text Inputs', function() {
       // Type ".2" into the text input
       input.addValue('.2');
 
-      expect(input.getValue()).to.equal('2');
+      expect(input.getValue()).toEqual('2');
     });
   });
 
@@ -29,7 +29,7 @@ describe('Text Inputs', function() {
       const boxShadow = input.getCssProperty('box-shadow').value;
 
       // assert it's equal to 'none'
-      expect(boxShadow).to.equal('none');
+      expect(boxShadow).toEqual('none');
     });
   });
 
@@ -52,7 +52,7 @@ describe('Text Inputs', function() {
 
       // Type ".", to replace "@" with a period
 
-      expect(input.getValue()).to.equal('user.example.com');
+      expect(input.getValue()).toEqual('user.example.com');
 
       // get position of input cursor and assert not at end
     });
@@ -97,10 +97,10 @@ describe('Text Inputs', function() {
         return input[0].selectionStart;
       });
 
-      expect(cursorPosition).to.equal(7);
+      expect(cursorPosition).toEqual(7);
 
       // assert field value is correct
-      expect(input.getValue()).to.equal('http://example.com');
+      expect(input.getValue()).toEqual('http://example.com');
     });
   });
 });

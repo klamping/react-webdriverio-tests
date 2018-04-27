@@ -52,9 +52,9 @@ let wdioConfig = {
     {
       browserName: 'chrome',
     },
-    {
-      browserName: 'firefox',
-    },
+    // {
+    //   browserName: 'firefox',
+    // },
   ],
   //
   // ===================
@@ -196,8 +196,7 @@ let wdioConfig = {
    * @param {Array.<String>} specs List of spec file paths that are to be run
    */
   before: function(capabilities, specs) {
-    const chai = require('chai');
-    global.expect = chai.expect;
+    global.expect = require('expect');
   },
   /**
    * Runs before a WebdriverIO command gets executed.

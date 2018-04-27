@@ -14,16 +14,16 @@ describe('Input change events', function() {
       const secondRadio = $("//label[text()='Second Radio']/input");
 
       toggleButton.click();
-      expect(firstRadio.isSelected()).to.be.true;
-      expect(secondRadio.isSelected()).to.be.false;
+      expect(firstRadio.isSelected()).toBe(true);
+      expect(secondRadio.isSelected()).toBe(false);
 
       toggleButton.click();
-      expect(firstRadio.isSelected()).to.be.false;
-      expect(secondRadio.isSelected()).to.be.true;
+      expect(firstRadio.isSelected()).toBe(false);
+      expect(secondRadio.isSelected()).toBe(true);
 
       toggleButton.click();
-      expect(firstRadio.isSelected()).to.be.true;
-      expect(secondRadio.isSelected()).to.be.false;
+      expect(firstRadio.isSelected()).toBe(true);
+      expect(secondRadio.isSelected()).toBe(false);
     });
   });
 });
