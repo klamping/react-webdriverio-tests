@@ -11,8 +11,6 @@ jobs:
     steps:
       - checkout
 
-      - run: npm run lint
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -26,6 +24,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: npm run lint
 
       ## download react image and start server
       - run: |
