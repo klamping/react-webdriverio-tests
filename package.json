@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "shx rm -rf ./allure-results",
     "lint": "eslint wdio.conf.js test/**/*.js",
-    "test": "rimraf ./allure-results && wdio",
+    "pretest": "npm run clean",
+    "test": "wdio",
     "report": "allure generate --clean && allure open",
     "report:generate": "allure generate",
     "report:open": "allure open"
@@ -44,6 +46,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
+    "shx": "^0.2.2",
     "wdio-mocha-framework": "^0.5.13",
     "wdio-spec-reporter": "^0.1.4"
   }
