@@ -32,7 +32,6 @@
     "eslint-plugin-prettier": "^2.6.0",
     "expect": "^22.4.3",
     "prettier": "^1.12.1",
-    "rimraf": "^2.6.2",
     "wdio-allure-reporter": "^0.6.0",
     "wdio-chromedriver-service": "^0.1.2",
     "wdio-docker-service": "^1.1.8",
