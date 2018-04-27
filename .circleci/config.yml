@@ -11,6 +11,8 @@ jobs:
     steps:
       - checkout
 
+      - run: npm run lint
+
       # Download and cache dependencies
       - restore_cache:
           keys:

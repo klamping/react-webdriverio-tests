@@ -1,15 +1,17 @@
 class TestCase {
-    constructor(index) {
-        this.selector = `.test-case:nth-of-type(${index})`;
-    }
+  constructor(index) {
+    this.selector = `.test-case:nth-of-type(${index})`;
+  }
 
-    get container() {
-        return $(this.selector);
-    }
+  get container() {
+    return $(this.selector);
+  }
 
-    getInput(index) {
-        return this.container.$(`.test-fixture fieldset:nth-of-type(${index}) input`);
-    }
+  getInput(index) {
+    return this.container.$(
+      `.test-fixture fieldset:nth-of-type(${index}) input`
+    );
+  }
 }
 
 module.exports = TestCase;
