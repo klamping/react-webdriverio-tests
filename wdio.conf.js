@@ -52,9 +52,9 @@ let wdioConfig = {
     {
       browserName: 'chrome',
     },
-    // {
-    //   browserName: 'firefox',
-    // },
+    {
+      browserName: 'firefox',
+    },
   ],
   //
   // ===================
