@@ -34,7 +34,7 @@ describe('Text Inputs', function() {
   });
 
   // setSelectionRange is not supported in modern browsers on 'email' input types
-  describe.skip('Cursor when editing email inputs', function() {
+  xdescribe('Cursor when editing email inputs', function() {
     it('should not jump to the end', function() {
       const testCase = new TestCase(3);
 
@@ -62,7 +62,7 @@ describe('Text Inputs', function() {
     it('should not jump to the end !@firefox', function() {
       // Temp workaround to skip this test in Firefox
       if (browser.options.desiredCapabilities.browserName === 'firefox') {
-        this.skip();
+        pending();
       }
 
       const testCase = new TestCase(4);
