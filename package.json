@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "shx rm -rf ./allure-results",
+    "clean": "shx rm -rf ./allure-results ./errorShots",
     "lint": "eslint wdio.conf.js test/**/*.js",
     "pretest": "npm run clean",
     "test": "wdio",
@@ -35,6 +35,7 @@
     "wdio-allure-reporter": "^0.6.0",
     "wdio-chromedriver-service": "^0.1.2",
     "wdio-docker-service": "^1.1.8",
+    "wdio-jasmine-framework": "^0.3.4",
     "wdio-junit-reporter": "^0.4.2",
     "wdio-screenshots-cleanup-service": "0.0.7",
     "wdio-selenium-standalone-service": "0.0.10",

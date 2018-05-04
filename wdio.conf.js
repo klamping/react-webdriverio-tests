@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const mochaTimeout = process.env.DEBUG === 'true' ? 99999999 : 120000;
+const testTimeout = process.env.DEBUG === 'true' ? 99999999 : 120000;
 
 let wdioConfig = {
   //
@@ -142,7 +142,20 @@ let wdioConfig = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: 'mocha',
+  framework: 'jasmine',
+
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: testTimeout,
+  },
+
+  //
+  // Options to be passed to Mocha.
+  // See the full list at http://mochajs.org/
+  // mochaOpts: {
+  //   ui: 'bdd',
+  //   timeout: testTimeout,
+  // },
+
   //
   // Test reporter for stdout.
   // The only one supported by default is "dot"
@@ -156,14 +169,6 @@ let wdioConfig = {
     allure: {
       outputDir: 'allure-results',
     },
-  },
-
-  //
-  // Options to be passed to Mocha.
-  // See the full list at http://mochajs.org/
-  mochaOpts: {
-    ui: 'bdd',
-    timeout: mochaTimeout,
   },
   //
   // =====
@@ -195,9 +200,8 @@ let wdioConfig = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that are to be run
    */
-  before: function(capabilities, specs) {
-    global.expect = require('expect');
-  },
+  // before: function(capabilities, specs) {
+  // },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
