@@ -8,6 +8,10 @@ jobs:
     docker:
       - image: klamping/wdio-ff
 
+    environment:
+      GIT_URL: "git@github.com:facebook/react.git"
+      BRANCH: "master"
+
     steps:
       - checkout
 
@@ -19,7 +23,9 @@ jobs:
       - run: |
           export TZ=/usr/share/zoneinfo/America/Los_Angeles
           git clone $GIT_URL react
-          cd react && yarn && yarn build --type=UMD_DEV
+          cd react
+          git checkout $BRANCH
+          yarn && yarn build --type=UMD_DEV
           cd fixtures/dom/ && yarn && yarn prestart && yarn build
       - run:
           command: cd react/fixtures/dom && yarn start
