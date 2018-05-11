@@ -160,7 +160,7 @@ let wdioConfig = {
   // Test reporter for stdout.
   // The only one supported by default is "dot"
   // see also: http://webdriver.io/guide/reporters/dot.html
-  reporters: ['spec', 'allure'],
+  // reporters: ['spec', 'allure'],
 
   reporterOptions: {
     junit: {
@@ -183,7 +183,7 @@ let wdioConfig = {
    * @param {Object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  // onPrepare: function (config, capabilities) {
+  // onPrepare: function(config, capabilities) {
   // },
   /**
    * Gets executed just before initialising the webdriver session and test framework. It allows you
@@ -192,8 +192,22 @@ let wdioConfig = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that are to be run
    */
-  // beforeSession: function (config, capabilities, specs) {
-  // },
+  beforeSession: function(config, capabilities, specs) {
+    // don't run our grep if command line defined
+    if (config.jasmineNodeOpts && config.jasmineNodeOpts.grep) {
+      return;
+    }
+
+    // https://regexr.com/3pas4
+    // exclude specs using !
+    // if browserName equals !whatever, skip the test
+    // exlude specs using @
+    // if browserName does not equal @whatever, skip the test
+    config.jasmineNodeOpts.grep = `(!${capabilities.browserName})|(@(?!${
+      capabilities.browserName
+    }))`;
+    config.jasmineNodeOpts.invertGrep = true;
+  },
   /**
    * Gets executed before test execution begins. At this point you can access to all global
    * variables like `browser`. It is the perfect place to define custom commands.
@@ -214,14 +228,13 @@ let wdioConfig = {
    * Hook that gets executed before the suite starts
    * @param {Object} suite suite details
    */
-  // beforeSuite: function (suite) {
+  // beforeSuite: function(suite) {
   // },
   /**
    * Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
    * @param {Object} test test details
    */
-  // beforeTest: function (test) {
-  // },
+  // beforeTest: function(test) {
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
    * beforeEach in Mocha)

@@ -7,11 +7,7 @@ describe('Number Inputs', function() {
   });
 
   describe('Backspacing', function() {
-    it('should not lose decimal place', function() {
-      // Temp workaround to skip this test in Firefox
-      if (browser.options.desiredCapabilities.browserName === 'firefox') {
-        pending();
-      }
+    it('should not lose decimal place !firefox', function() {
       const testCase = new TestCase(1);
 
       // Type "3.1"
@@ -48,11 +44,7 @@ describe('Number Inputs', function() {
       expect(testCase.getHintValue()).toEqual('20000');
     });
 
-    it('Pressing "e" at the end', function() {
-      // Temp workaround to skip this test in Firefox
-      if (browser.options.desiredCapabilities.browserName === 'firefox') {
-        pending();
-      }
+    it('Pressing "e" at the end !firefox', function() {
       const testCase = new TestCase(4);
       testCase.scrollTo();
 
@@ -65,11 +57,7 @@ describe('Number Inputs', function() {
       expect(testCase.getHintValue()).toEqual('""');
     });
 
-    it('Supports pressing "ee" in the middle of a number', function() {
-      // Temp workaround to skip this test in Firefox
-      if (browser.options.desiredCapabilities.browserName === 'firefox') {
-        pending();
-      }
+    it('Supports pressing "ee" in the middle of a number !firefox', function() {
       const testCase = new TestCase(5);
       testCase.scrollTo();
 
