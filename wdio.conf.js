@@ -1,19 +1,27 @@
+const argv = require('yargs').argv;
+
 require('dotenv').config();
 
 const testTimeout = process.env.DEBUG === 'true' ? 99999999 : 120000;
 
-let wdioConfig = {
-  //
-  // =================
-  // Service Providers
-  // =================
-  // WebdriverIO supports Sauce Labs, Browserstack, and Testing Bot (other cloud providers
-  // should work too though). These services define specific user and key (or access key)
-  // values you need to put in here in order to connect to these services.
-  //
-  // user: process.env.BROWSERSTACK_USER,
-  // key: process.env.BROWSERSTACK_USER,
+let capabilities = [
+  {
+    browserName: 'chrome',
+  },
+  {
+    browserName: 'firefox',
+  },
+];
 
+if (argv.caps) {
+  // dynamically build out the capabilities
+  const browsers = argv.caps.split(',');
+  capabilities = browsers.map(browserName => {
+    return {browserName};
+  });
+}
+
+let wdioConfig = {
   //
   // ==================
   // Specify Test Files
@@ -26,36 +34,8 @@ let wdioConfig = {
   specs: ['./test/**/*.js'],
   // Patterns to exclude.
   exclude: ['./test/**/*.page.js'],
-  //
-  // ============
-  // Capabilities
-  // ============
-  // Define your capabilities here. WebdriverIO can run multiple capabilities at the same
-  // time. Depending on the number of capabilities, WebdriverIO launches several test
-  // sessions. Within your capabilities you can overwrite the spec and exclude options in
-  // order to group specific specs to a specific capability.
-  //
-  // First, you can define how many instances should be started at the same time. Let"s
-  // say you have 3 different capabilities (Chrome, Firefox, and Safari) and you have
-  // set maxInstances to 1; wdio will spawn 3 processes. Therefore, if you have 10 spec
-  // files and you set maxInstances to 10, all spec files will get tested at the same time
-  // and 30 processes will get spawned. The property handles how many capabilities
-  // from the same test should run tests.
-  //
   maxInstances: 10,
-  //
-  // If you have trouble getting all important capabilities together, check out the
-  // Sauce Labs platform configurator - a great tool to configure your capabilities:
-  // https://docs.saucelabs.com/reference/platforms-configurator
-  //
-  capabilities: [
-    {
-      browserName: 'chrome',
-    },
-    {
-      browserName: 'firefox',
-    },
-  ],
+  capabilities,
   //
   // ===================
   // Test Configurations
@@ -98,25 +78,6 @@ let wdioConfig = {
   //
   // Default request retries count
   connectionRetryCount: 3,
-  //
-  // Initialize the browser instance with a WebdriverIO plugin. The object should have the
-  // plugin name as key and the desired plugin options as properties. Make sure you have
-  // the plugin installed before running any tests. The following plugins are currently
-  // available:
-  // WebdriverCSS: https://github.com/webdriverio/webdrivercss
-  // WebdriverRTC: https://github.com/webdriverio/webdriverrtc
-  // Browserevent: https://github.com/webdriverio/browserevent
-  // plugins: {
-  //     webdrivercss: {
-  //         screenshotRoot: "my-shots",
-  //         failedComparisonsRoot: "diffs",
-  //         misMatchTolerance: 0.05,
-  //         screenWidth: [320,480,640,1024]
-  //     },
-  //     webdriverrtc: {},
-  //     browserevent: {}
-  // },
-  //
   // Test runner services
   // Services take over a specific job you don"t want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don"t add new
@@ -127,34 +88,15 @@ let wdioConfig = {
     folder: './errorShots/',
   },
 
-  debug: true,
-  dockerOptions: {
-    image: process.env.DOCKER_IMAGE || 'klamping/reactdom',
-    healthCheck: 'http://localhost:3000',
-    options: {
-      p: ['3000:3000'],
-    },
-  },
   //
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: http://webdriver.io/guide/testrunner/frameworks.html
-  //
-  // Make sure you have the wdio adapter package for the specific framework installed
-  // before running any tests.
   framework: 'jasmine',
 
   jasmineNodeOpts: {
     defaultTimeoutInterval: testTimeout,
   },
-
-  //
-  // Options to be passed to Mocha.
-  // See the full list at http://mochajs.org/
-  // mochaOpts: {
-  //   ui: 'bdd',
-  //   timeout: testTimeout,
-  // },
 
   //
   // Test reporter for stdout.
