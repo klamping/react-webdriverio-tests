@@ -3,6 +3,7 @@ const argv = require('yargs').argv;
 require('dotenv').config();
 
 const testTimeout = process.env.DEBUG === 'true' ? 99999999 : 120000;
+const maxInstances = argv.maxInstances ? argv.maxInstances : 5;
 
 let capabilities = [
   {
@@ -34,7 +35,7 @@ let wdioConfig = {
   specs: ['./test/**/*.js'],
   // Patterns to exclude.
   exclude: ['./test/**/*.page.js'],
-  maxInstances: 10,
+  maxInstances,
   capabilities,
   //
   // ===================
