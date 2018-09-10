@@ -239,8 +239,8 @@ let wdioConfig = {
   // }
 };
 
-if (process.env.BROWSERSTACK_USER) {
-  wdioConfig.services.push('browserstack');
+if (process.env.SAUCELABS_USER) {
+  wdioConfig.services.push('sauce');
 
   wdioConfig.capabilities = [
     {
