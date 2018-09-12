@@ -33,12 +33,12 @@ yarn test --baseUrl=http://localhost:5000
 
 ### Remote testing
 
-1. Create an account (a free trial is fine) on [Browserstack](http://browserstack.com) or [Sauce Labs](https://saucelabs.com/).
+1. Create an account (a free trial is fine) on [Sauce Labs](https://saucelabs.com/).
 2. Copy `.env.example` to `.env`.
-3. Fill in your browserstack username and key within `.env`
+3. Fill in your Sauce Labs username and key within `.env`
 
 ```bash
 yarn test
 ```
 
-By default, this tests 5 different browsers on the Browserstack platform.
+By default, this tests 5 different browsers on the Sauce Labs platform.
