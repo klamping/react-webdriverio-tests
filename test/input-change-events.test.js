@@ -1,7 +1,7 @@
 describe('Input change events', function() {
   beforeEach(function() {
     browser.url('/input-change-events');
-    browser.waitForVisible('.container');
+    $('.container').waitForDisplayed();
   });
 
   describe('Radio button groups with name changes', function() {

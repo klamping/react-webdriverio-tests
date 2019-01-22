@@ -20,17 +20,15 @@ class TestCase {
   }
 
   getControlledInputValue() {
-    return browser.selectorExecute(this.controlledInputSelector, function(
-      inputs
-    ) {
-      inputs[0].focus();
+    return browser.execute(function(input) {
+      input.focus();
       document.execCommand('SelectAll');
       return window.getSelection().toString();
-    });
+    }, this.controlledInput);
   }
 
   scrollTo() {
-    browser.scroll(this.container.selector);
+    this.container.scrollIntoView();
   }
 
   getInput(index) {

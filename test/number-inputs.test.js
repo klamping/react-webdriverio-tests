@@ -3,7 +3,7 @@ const TestCase = require('./pages/TestCase.page');
 describe('Number Inputs', function() {
   beforeEach(function() {
     browser.url('/number-inputs');
-    browser.waitForText('.container');
+    $('.container').waitForDisplayed();
   });
 
   describe('Backspacing', function() {

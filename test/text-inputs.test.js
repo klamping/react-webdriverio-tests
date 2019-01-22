@@ -3,7 +3,7 @@ const TestCase = require('./pages/TestCase.page');
 describe('Text Inputs', function() {
   beforeEach(function() {
     browser.url('/text-inputs');
-    browser.waitForText('.container');
+    $('.container').waitForDisplayed();
   });
 
   describe('Numbers in a controlled text field with no handler', function() {
@@ -39,7 +39,7 @@ describe('Text Inputs', function() {
       testCase.controlledInput.setValue('user@example.com');
 
       // Select "@"
-      testCase.controlledInput.selectorExecute(function() {
+      testCase.controlledInput.execute(function() {
         // use Web API to select the @
 
         testCase.controlledInput.setSelectionRange(4, 5);
@@ -60,22 +60,17 @@ describe('Text Inputs', function() {
       testCase.controlledInput.setValue('http://www.example.com');
 
       // Select "www."
-      browser.selectorExecute(testCase.controlledInputSelector, function(
-        input
-      ) {
-        input[0].setSelectionRange(7, 11);
-      });
+      browser.execute(function(input) {
+        input.setSelectionRange(7, 11);
+      }, testCase.controlledInput);
 
       // Press backspace/delete
       testCase.controlledInput.addValue('Backspace');
 
       // get position of input cursor and assert not at end
-      const cursorPosition = browser.selectorExecute(
-        testCase.controlledInputSelector,
-        function(input) {
-          return input[0].selectionStart;
-        }
-      );
+      const cursorPosition = browser.execute(function(input) {
+        return input.selectionStart;
+      }, testCase.controlledInput);
 
       expect(cursorPosition).toEqual(7);
 
