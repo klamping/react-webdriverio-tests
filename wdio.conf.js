@@ -145,6 +145,7 @@ let wdioConfig = {
         },
     },
 
+<<<<<<< HEAD
     //
     // =====
     // Hooks
@@ -172,6 +173,10 @@ let wdioConfig = {
         if (config.jasmineNodeOpts && config.jasmineNodeOpts.grep) {
             return;
         }
+=======
+if (process.env.SAUCELABS_USER) {
+  wdioConfig.services.push('sauce');
+>>>>>>> 770ecc612dca8d4ae2b5c225e6547157887fea46
 
         // https://regexr.com/3pas4
         // exclude specs using !
