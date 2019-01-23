@@ -41,4 +41,4 @@ yarn test --baseUrl=http://localhost:5000
 yarn test
 ```
 
-By default, this tests 5 different browsers on the Sauce Labs platform.
+By default, this tests 4 different browsers on the Sauce Labs platform.
